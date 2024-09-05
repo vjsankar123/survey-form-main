@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTS Feedback-Form</title>
+    <link rel="icon" type="image/png" href="EVVI_Icon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <section>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="color"></div>
+      </section>
+      <div class="loading-container">
+        <div class="loading-content">
+            <div class="loading-animation">
+                <div class="loading-spinner"></div>
+                <div class="text">
+                    Powered by <br><img src="Evvi_new.png" alt="Evvi Logo"/><br>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="container">
+        <!-- Slide 1 -->
+        <div class="slide" id="slide1">
+            <img src="Evvi_new.png" alt="evvi-icon" class="icon">
+            <p class="para">Thank you for participating in our training session!<br>
+                Your feedback helps us improve and provide you <br> with an even better experience.<br>
+                Please take a <br> moment to share your thoughts.</p>
+            <button onclick="nextSlide(1)">START</button>
+        </div>
+
+        <div class="slide" id="slide2">
+            <form action="" method="">
+                <h2>Participant Information</h2>
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" required><br>
+                <button type="button" class="btns" onclick="nextSlide(2)">NEXT</button>
+            </form>
+        </div>
+        
+<!-- Slide 3 -->
+<div class="slide" id="slide3">
+    <div class="field">
+        <div class="fail">Age Group:</div>
+        <input type="range" id="customRange" min="0" max="4" step="1" value="0" oninput="updateValue(this.value)">
+        <div class="range-labels">
+            <!-- Age Group Labels -->
+            <div id="label-0" class="range-label"><span class="emoji" id="emoji-0">👶</span><span>Under 18</span></div>
+            <div id="label-1" class="range-label"><span class="emoji" id="emoji-1">🎓</span><span>18-24</span></div>
+            <div id="label-2" class="range-label"><span class="emoji" id="emoji-2">💼</span><span>25-34</span></div>
+            <div id="label-3" class="range-label"><span class="emoji" id="emoji-3">🏆</span><span>35-44</span></div>
+            <div id="label-4" class="range-label"><span class="emoji" id="emoji-4">🎉</span><span>45 and above</span></div>
+        </div>
+    </div>
+    <button type="button" class="btns" onclick="nextSlide(3)">NEXT</button>
+</div>
+<!-- Slide 4 (Current Status) -->
+<div class="slide" id="slide4">
+    <h2>Additional Information</h2>
+    <div class="field">
+        <div class="fail">Current Status:</div>
+        <label class="custom-checkbox">
+            <input type="radio" name="option" value="1" onclick="toggleOtherField(false)">
+            <span class="checkmark">
+                <i class="fas fa-check"></i> <!-- Font Awesome tick icon -->
+            </span>
+            Student
+        </label>
+        <label class="custom-checkbox">
+            <input type="radio" name="option" value="2" onclick="toggleOtherField(false)">
+            <span class="checkmark">
+                <i class="fas fa-check"></i> <!-- Font Awesome tick icon -->
+            </span>
+            Professional
+        </label>
+        <label class="custom-checkbox">
+            <input type="radio" name="option" value="3" onclick="toggleOtherField(true)">
+            <span class="checkmark">
+                <i class="fas fa-check"></i> <!-- Font Awesome tick icon -->
+            </span>
+            Other 
+        </label> 
+        <div id="otherTextField" class="other-text-field" style="display: none;">
+            <label for="other_status">Please specify:</label>
+            <input type="text" id="other_status" name="other_status">
+        </div>
+    </div>
+    <button type="button" class="btns" onclick="nextSlide(4)">NEXT</button>
+</div>
+
+
+<!-- Slide 5 (Location) -->
+<div class="slide" id="slide5">
+    <div class="field">
+        <div class="fail">Location:</div>
+        <div class="class">
+            Country: 
+            <select name="state" id="countySel" size="1">
+                <option value="" selected="selected">Select Country</option>
+            </select><br><br>
+            State: 
+            <select name="countrya" id="stateSel" size="1">
+                <option value="" selected="selected">Please select Country</option>
+            </select><br><br>
+            City: 
+            <select name="district" id="districtSel" size="1">
+                <option value="" selected="selected">Please select State</option>
+            </select><br>
+        </div>
+    </div>
+    <button type="button" class="btns" onclick="nextSlide(5)">NEXT</button>
+</div>
+
+ <!-- Slide 6 (Popup) -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <h2>Thank you for your information. Please provide your feedback for the following question.</h2>
+        <button class="btns" onclick="nextSlide(6)">START</button>
+    </div>
+</div>
+
+ <!-- Slide 7 (Questions) -->
+  <!-- Fun-o-meter Slider -->
+<div class="fun-o-meter">
+    <h2>1. Was the session lively and engaging to you?</h2>
+    <div class="slider-container">
+        <input type="range" id="fun-o-meter-slider" min="1" max="5" step="1" value="3" onchange="updateFunOMeter(this.value)">
+        <div class="emoji-container">
+            <span class="emoji" data-value="1">😴</span> <!-- Dull -->
+            <span class="emoji" data-value="2">😐</span> <!-- Meh -->
+            <span class="emoji" data-value="3">😊</span> <!-- Engaging -->
+            <span class="emoji" data-value="4">😃</span> <!-- Exciting -->
+            <span class="emoji" data-value="5">🚀</span> <!-- Blast -->
+        </div>
+    </div>
+</div>
+
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
